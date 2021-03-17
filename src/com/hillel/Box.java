@@ -20,13 +20,20 @@ public class Box {
 
     //обновленный конструктор класса с цветом и материалом
     public Box(int length, int width, int height, String color, String fabric) {
-        this (length, width, height);
+        if (checkBoxParams(length) && checkBoxParams(width) && checkBoxParams(height)) {
+            this.length = length;
+            this.width = width;
+            this.height = height;
+        } else {
+            //если получили хотя бы одно из отрицательных значений - прерываем создание экземпляра класса
+            throw new IllegalArgumentException("Создание елемента класса прервано. Стороны коробки не могут быть отрицательным числом");
+        }
         this.color = color;
         this.fabric = fabric;
     }
 
     //геттеры
-    public int getLength () {
+    public int getLength() {
         return length;
     }
 
@@ -38,17 +45,45 @@ public class Box {
         return height;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public String getFabric() {
+        return fabric;
+    }
+
     //сеттеры
     public void setLength(int length) {
-        this.length = length;
+        if (checkBoxParams(length)) {
+            this.length = length;
+        } else {
+            System.out.println("Длина коробки не может быть отрицательным значением");
+        }
     }
 
     public void setWidth(int width) {
-        this.width = width;
+        if (checkBoxParams(width)) {
+            this.width = width;
+        } else {
+            System.out.println("Ширина коробки не может быть отрицательным значением");
+        }
     }
 
     public void setHeight(int height) {
-        this.height = height;
+        if (checkBoxParams(height)) {
+            this.height = height;
+        } else {
+            System.out.println("Высота коробки не может быть отрицательным значением");
+        }
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setFabric(String fabric) {
+        this.fabric = fabric;
     }
 
     //метод получения объема созданной коробки
@@ -56,12 +91,8 @@ public class Box {
         return this.length * this.width * this.height;
     }
 
-    private Boolean checkBoxParams (int boxParam) {
-        if (boxParam <= 0) {
-            System.out.println("Введено отрицательное значение!");
-            return false;
-        }
-        return true;
+    private Boolean checkBoxParams(int boxParam) {
+        return boxParam > 0;
     }
 
 }
