@@ -7,19 +7,10 @@ public class Box {
     private int length;
     private int width;
     private int height;
-    private String color;
     private String fabric;
 
-
-    //конструктор класса
-    public Box(int length, int width, int height) {
-        this.length = length;
-        this.width = width;
-        this.height = height;
-    }
-
     //обновленный конструктор класса с цветом и материалом
-    public Box(int length, int width, int height, String color, String fabric) {
+    public Box(int length, int width, int height, String fabric) {
         if (checkBoxParams(length) && checkBoxParams(width) && checkBoxParams(height)) {
             this.length = length;
             this.width = width;
@@ -28,7 +19,6 @@ public class Box {
             //если получили хотя бы одно из отрицательных значений - прерываем создание экземпляра класса
             throw new IllegalArgumentException("Создание елемента класса прервано. Стороны коробки не могут быть отрицательным числом");
         }
-        this.color = color;
         this.fabric = fabric;
     }
 
@@ -43,10 +33,6 @@ public class Box {
 
     public int getHeight() {
         return height;
-    }
-
-    public String getColor() {
-        return color;
     }
 
     public String getFabric() {
@@ -78,11 +64,7 @@ public class Box {
         }
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public void setFabric(String fabric) {
+     public void setFabric(String fabric) {
         this.fabric = fabric;
     }
 

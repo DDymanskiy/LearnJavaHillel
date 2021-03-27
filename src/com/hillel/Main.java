@@ -10,19 +10,15 @@ public class Main {
         int l = getIntFromConsole(scanner, "Введите длину коробки: ");
         int w = getIntFromConsole(scanner, "Введите длину коробки: ");
         int h = getIntFromConsole(scanner, "Введите длину коробки: ");
-        String color = getStringFromConsole(scanner, "Введите цвет коробки: ");
-        String fabric = getStringFromConsole(scanner, "Введите материал коробки: ");
 
         try {
-            Box box = new Box(l, w, h, color, fabric);
+            BoxColor box = new BoxColor(l, w, h, Fabric.cardboard.getDescription(), Color.BROWN.getDescription());
             System.out.println("Длина созданной коробки: " + box.getLength());
             System.out.println("Ширина созданной коробки: " + box.getWidth());
             System.out.println("Высота созданной коробки: " + box.getHeight());
             System.out.println("Объем созданной коробки: " + box.getCapacity());
-            System.out.println("Цвет созданной коробки: " + box.getColor());
             System.out.println("Материал созданной коробки: " + box.getFabric());
-
-            box.setLength(-10);
+            System.out.println("Цвет созданной коробки: " + box.getColor());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -41,9 +37,4 @@ public class Main {
         } while (true);
     }
 
-    //метод получения строки из консоли
-    public static String getStringFromConsole(Scanner scanner, String text) {
-        System.out.print(text);
-        return scanner.next();
-    }
 }
