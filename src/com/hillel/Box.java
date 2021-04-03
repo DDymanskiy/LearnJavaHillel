@@ -77,4 +77,13 @@ public class Box {
         return boxParam > 0;
     }
 
+    @Override
+    public String toString() {
+        return "Box{" +
+                "length=" + length +
+                ", width=" + width +
+                ", height=" + height +
+                ", fabric='" + fabric + '\'' +
+                '}';
+    }
 }
